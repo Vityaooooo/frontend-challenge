@@ -12,11 +12,16 @@ const App = () => {
 	const [cats, setCats] = useState([]);
 	const [likedCats, setLikedCats] = useState([]);
 	const [page, setPage] = useState(0);
+	const [isLoading, setIsLoading] = useState(false);
 
 	const loadMoreCats = () => {
+		if (isLoading) return;
+		setIsLoading(true);
+
 		getCatApi(page).then((newCats) => {
 			setCats((prevCats) => [...prevCats, ...newCats]);
-			setPage(page + 1);
+			setPage((prevPage) => prevPage + 1);
+			setIsLoading(false);
 		});
 	};
 
@@ -54,6 +59,10 @@ const App = () => {
 								/>
 							</Gallery>
 						}
+					/>
+					<Route
+						path='*'
+						element={<div className='not-found'>404 - Not Found &#9785;</div>}
 					/>
 				</Routes>
 			</section>

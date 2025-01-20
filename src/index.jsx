@@ -10,7 +10,7 @@ const root = createRoot(domNode);
 root.render(
 	<StrictMode>
 		<BrowserRouter
-			basename={process.env.PUBLIC_PATH ? process.env.PUBLIC_PATH : '/'}>
+			basename={process.env.PUBLIC_PATH || '/'}>
 			<App />
 		</BrowserRouter>
 	</StrictMode>

@@ -11,16 +11,20 @@ const requestOptions = {
 	headers: headers,
 };
 
-export const getCatApi = (page = 0) => {
+export const getCatApi = async (page = 0) => {
 	try {
-		return fetch(
+		const response = await fetch(
 			`${URL}search?size=med&mime_types=jpg&format=json&has_breeds=true&order=RANDOM&page=${page}&limit=30`,
 			requestOptions
-		)
-			.then((response) => response.json())
-			.then((result) => result)
-			.catch((error) => error);
+		);
+
+		if (!response.ok) {
+			throw new Error(`HTTP error! Status: ${response.status}`);
+		}
+
+		return response.json();
 	} catch (error) {
-		console.log('Caught an error:', error);
+		console.error('Error fetching cats:', error);
+		return []; 
 	}
 };

@@ -3,7 +3,7 @@ import ButtonHeader from '../../button-header/ButtonHeader';
 const AppHeaderUI = ({ locationPath }) => (
 	<header className='header'>
 		<nav className='menu'>
-			<ul>
+			<ul className='menu__list'>
 				<ButtonHeader path='/' isActiveButton={locationPath === '/'}>
 					Все котики
 				</ButtonHeader>
