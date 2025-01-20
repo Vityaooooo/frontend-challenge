@@ -1,8 +1,4 @@
-/* Подключаем стили со шрифтами, так как они нужны на всех страницах */
-
-@import '~fonts/font';
-
-/* Отключаем браузерные дефолтные стили для всех элементов */
+@import '../fonts/font.css';
 
 html,
 div,
@@ -92,8 +88,6 @@ video {
 	border: 0;
 }
 
-/* HTML5 display-role reset for older browsers */
-
 article,
 aside,
 details,
@@ -111,7 +105,7 @@ section {
 body {
 	margin: 0;
 	padding: 0;
-	font: inherit;
+	font: 'Roboto', inherit;
 	font-size: 100%;
 	line-height: 1;
 	vertical-align: baseline;
@@ -141,17 +135,107 @@ table {
 	border-spacing: 0;
 }
 
+* {
+	box-sizing: border-box;
+}
+
 .header {
 	height: 64px;
 	background-color: #2196F3;
+	box-shadow: 0 4px 4px rgba(000, 000, 000, 0.2);
+}
+
+.menu {
 	padding: 0 62px;
+	height: 100%;
+}
+
+.menu ul {
+	height: 100%;
 	display: flex;
 }
 
-.header__button {
-	padding: 23px;
+.menu__button {
+	padding: 0 23px;
 	background-color: transparent;
 	border: none;
 	font-size: 14px;
 	font-family: 'Roboto';
+	line-height: 1.5;
+	cursor: pointer;
+	color: rgba(255, 255, 255, 0.7);
+}
+
+.menu__button_active {
+	background-color: #1E88E5;
+	color: #fff;
+}
+
+.gallery {
+	padding: 62px 48px;
+}
+
+.gallery__list {
+	display: flex;
+	gap: 52px 48px;
+	flex-wrap: wrap;
+}
+
+.card {
+	max-width: 225px;
+	aspect-ratio: 1/1;
+	flex-shrink: 1;
+	flex-grow: 1;
+	position: relative;
+	overflow: hidden;
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+	transform: scale(1.15);
+	box-shadow: 
+		0 9px 18px rgba(000, 000, 000, 0.1),
+		0 6px 5px rgba(000, 000, 000, 0.2);
+}
+
+.card__image {
+	height: 225px;
+	aspect-ratio: 1/1;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.card__button {
+	position: absolute;
+	bottom: 19px;
+	right: 19px;
+	cursor: pointer;
+	border: none;
+	opacity: 1;
+	background-color: transparent;
+  transition: opacity 0.3s ease;
+}
+
+.like-icon {
+	transition: opacity 0.3s ease;
+	opacity: 0;
+} 
+
+.card:hover .like-icon {
+	opacity: 1;
+}
+
+.card__button:hover,
+.card__button_active {
+	background-color: #F24E1E;
+	clip-path: path('M20 36.7L17.1 34.06C6.8 24.72 0 18.56 0 11C0 4.84 4.84 0 11 0C14.48 0 17.82 1.62 20 4.18C22.18 1.62 25.52 0 29 0C35.16 0 40 4.84 40 11C40 18.56 33.2 24.72 22.9 34.08L20 36.7Z');
+  right: 13px;
+	bottom: 18px;
+}
+
+.load-more {
+	padding-top: 48px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
