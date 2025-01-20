@@ -1,7 +1,7 @@
 const HTMLWebpackPlugins = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const path = require('path'); //для того чтобы превратить отнсительный путь в абсолютный мы будем использовать пакет path
+const path = require('path');
 const webpack = require('webpack');
 
 const production = process.env.NODE_ENV === 'production';
@@ -49,7 +49,7 @@ module.exports = {
 				use: ['@svgr/webpack', 'url-loader'],
 			},
 			{
-				test: /\.(sa|sc|c)ss$/,
+				test: /css$/,
 				use: [
 					production ? MiniCssExtractPlugin.loader : 'style-loader',
 					{
@@ -64,23 +64,12 @@ module.exports = {
 						},
 					},
 					'postcss-loader',
-					{
-						loader: 'sass-loader',
-						options: {
-							sourceMap: true,
-						},
-					},
 				],
 			},
 		],
 	},
 	resolve: {
 		extensions: ['.js', '.jsx', '.tsx', '.ts', '.json'], //указываем файлы с которыми будет работать webpack
-		alias: {
-			fonts: path.resolve(__dirname, '..', './src/fonts'),
-			src: path.resolve(__dirname, '..', './src'),
-			components: path.resolve(__dirname, '..', './src/components'),
-		},
 	},
 	plugins: [
 		new HTMLWebpackPlugins({
