@@ -290,6 +290,6 @@ table {
 	}
 
 	.card {
-		block-size: 100%;
+		inline-size: 100%;
 	}
 }
