@@ -3,14 +3,6 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 const webpack = require('webpack');
-const dotenv = require('dotenv');
-
-const env = dotenv.config().parsed || {};
-
-const envKeys = Object.keys(env).reduce((acc, key) => {
-  acc[`process.env.${key}`] = JSON.stringify(env[key]);
-  return acc;
-}, {});
 
 const production = process.env.NODE_ENV === 'production';
 
@@ -21,7 +13,7 @@ module.exports = {
 		filename: production
 			? 'static/scripts/[name].[contenthash].js'
 			: 'static/scripts/[name].js',
-			publicPath: process.env.PUBLIC_PATH ? process.env.PUBLIC_PATH : './',
+			publicPath: process.env.PUBLIC_PATH || '/',
 	},
 	module: {
 		rules: [
@@ -90,6 +82,10 @@ module.exports = {
 			PUBLIC_PATH: null,
 			NODE_ENV: 'development',
 		}),
-		new webpack.DefinePlugin(envKeys)
+		new webpack.DefinePlugin({
+      'process.env.CAT_API_URL': JSON.stringify(process.env.CAT_API_URL || ''),
+      'process.env.API_KEY': JSON.stringify(process.env.API_KEY || ''),
+      'process.env.PUBLIC_PATH': JSON.stringify(process.env.PUBLIC_PATH || '/'),
+    }),
 	],
 };
