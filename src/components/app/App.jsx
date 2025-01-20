@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import AppHeader from '../app-header/AppHeader';
 import { Route, Routes } from 'react-router-dom';
-import { getCatApi } from '../..//utils/api';
+import { getCatApi } from '../../utils/api';
 import Gallery from '../gallery/Gallery';
 import ListCats from '../list-cats/ListCats';
 import ListLikedCats from '../list-liked-cats/ListLikedCats';

@@ -25,6 +25,6 @@ export const getCatApi = async (page = 0) => {
 		return response.json();
 	} catch (error) {
 		console.error('Error fetching cats:', error);
-		return []; 
+		return [];
 	}
 };

@@ -1,7 +1,13 @@
 import CardUI from '../ui/card/CardUI';
+import { useState } from 'react';
 
 const Card = ({ cat, likedCats, setLikedCats }) => {
+	const [isLoaded, setIsLoaded] = useState(false);
 	const isLiked = likedCats.some((likedCat) => likedCat.id === cat.id);
+
+	const onHandleImageLoad = () => {
+		setIsLoaded(true);
+	};
 
 	const onHandleToggleLike = () => {
 		setLikedCats((prevState) => {
@@ -13,7 +19,15 @@ const Card = ({ cat, likedCats, setLikedCats }) => {
 		});
 	};
 
-	return <CardUI cat={cat} isLiked={isLiked} onClick={onHandleToggleLike} />;
+	return (
+		<CardUI
+			cat={cat}
+			isLiked={isLiked}
+			isLoaded={isLoaded}
+			onClick={onHandleToggleLike}
+			onLoad={onHandleImageLoad}
+		/>
+	);
 };
 
 export default Card;
