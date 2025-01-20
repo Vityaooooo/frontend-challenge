@@ -9,7 +9,8 @@ const domNode = document.getElementById('root');
 const root = createRoot(domNode);
 root.render(
 	<StrictMode>
-		<BrowserRouter>
+		<BrowserRouter
+			basename={process.env.PUBLIC_PATH ? process.env.PUBLIC_PATH : '/'}>
 			<App />
 		</BrowserRouter>
 	</StrictMode>

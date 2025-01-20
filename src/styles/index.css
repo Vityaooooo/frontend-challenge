@@ -172,13 +172,14 @@ table {
 }
 
 .gallery {
-	padding: 62px auto;
+	padding-top: 62px;
 }
 
 .gallery__list {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 52px 48px;
+	padding-inline: 48px;
 }
 
 .card {
