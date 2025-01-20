@@ -1,7 +1,5 @@
-const Gallery = ({children}) => (
-  <section className="gallery">
-    {children}
-  </section>
-)
+const Gallery = ({ children }) => (
+	<section className='gallery'>{children}</section>
+);
 
 export default Gallery;
